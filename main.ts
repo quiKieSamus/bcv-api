@@ -1,5 +1,5 @@
 // @ts-types="npm:@types/express@latest"
-import express from "npm:express@latest";
+import express from "express";
 import {getCurrencyFromBCV, Currency} from "jsr:@quikiesamus/scrape-bcv"
 
 const app = express();
@@ -34,7 +34,7 @@ app.get("/currencies/:name", (req, res) => {
     });
 })
 
-app.all("*", (_req, res) => {
+app.all("{*splat}", (_req, res) => {
     res.type("text");
     res.status(404).send("not found");
     res.end();
